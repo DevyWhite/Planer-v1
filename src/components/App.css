@@ -1,0 +1,383 @@
+/* App.css */
+
+/* Zmienne kolorów dla jasnego i ciemnego motywu */
+:root {
+   --background-light: #ffffff;
+   --background-dark: #121212;
+   --text-light: #000000;
+   --text-dark: #ffffff;
+   --border-light: #dddddd;
+   /* --border-dark: #c00101; */
+   --border-dark: #333333;
+   --primary-light: #007bff;
+   --primary-dark: #1e90ff;
+   --success-light: #28a745;
+   --success-dark: #2c6d3f;
+   --danger-light: #dc3545;
+   --danger-dark: #c82333;
+   --btn-done-background: #28a745;
+   --btn-done-text: #fff;
+   --btn-done-hover-background: #218838;
+
+   --btn-delete-background: #dc3545;
+   --btn-delete-text: #fff;
+   --btn-delete-hover-background: #c82333;
+
+   --btn-toggle-background: #007bff; /* Niebieski */
+   --btn-toggle-text: #fff; /* Biały tekst */
+   --btn-toggle-hover-background: #0056b3; /* Ciemniejszy niebieski */
+
+   --priority-color: #240508; /* Kolor priorytetowy (czerwony) */
+   --line-color: #007bff; /* Kolor kreski oddzielającej (niebieski) */
+   --check-icon-color: #28a745; /* Zielony kolor dla FaCheck */
+}
+
+/* Jasny motyw */
+.light-theme {
+   --background: var(--background-light);
+   --text: var(--text-light);
+   --border: var(--border-light);
+   --primary: var(--primary-light);
+   --success: var(--success-light);
+   --danger: var(--danger-light);
+   --card-background: #f8f9fa; /* Jasne tło dla kart */
+   --priority-color: #dc3545; /* Czerwony */
+   --line-color: #007bff; /* Niebieski */
+   --check-icon-color: #28a745; /* Zielony */
+}
+
+/* Ciemny motyw */
+.dark-theme {
+   --background: var(--background-dark);
+   --text: var(--text-dark);
+   --border: var(--border-dark);
+   --primary: var(--primary-dark);
+   --success: var(--success-dark);
+   --danger: var(--danger-dark);
+   --card-background: #1e1e1e; /* Ciemne tło dla kart */
+   --priority-color: #ff6f61; /* Czerwony dla ciemnego motywu */
+   --line-color: #1e90ff; /* Niebieski dla ciemnego motywu */
+   --check-icon-color: #28a745; /* Zielony dla ciemnego motywu */
+}
+
+/* Styl globalny */
+.App {
+   background-color: var(--background);
+   color: var(--text);
+   text-align: center;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   font-family: Arial, sans-serif;
+   position: relative;
+   min-height: 100vh; /* Zapewnia, że kontener zajmuje co najmniej wysokość okna */
+}
+
+/* Przycisk do przełączania motywów */
+.theme-toggle {
+   position: relative; /* Pozwala przyciskowi pozostać na normalnej pozycji w dokumencie */
+   display: inline-block; /* Umożliwia ustawienie marginesów i paddingu */
+   background-color: var(--toggle-button-background); /* Tło przycisku */
+   color: var(--toggle-button-text); /* Kolor tekstu przycisku */
+   border: none;
+   border-radius: 8px;
+   padding: 10px 20px;
+   font-size: 1rem;
+   cursor: pointer;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   transition: background-color 0.3s, color 0.3s;
+   margin: 20px; /* Dodaje margines wokół przycisku */
+   align-self: flex-end; /* Umieszcza przycisk na dole kontenera */
+}
+
+.theme-toggle:hover {
+   background-color: var(--toggle-button-hover-background);
+   color: var(--toggle-button-hover-text);
+}
+
+/* Dark theme button styles */
+.dark-theme .theme-toggle {
+   background-color: var(--dark-toggle-button-background);
+   color: var(--dark-toggle-button-text);
+}
+
+.dark-theme .theme-toggle:hover {
+   background-color: var(--dark-toggle-button-hover-background);
+   color: var(--dark-toggle-button-hover-text);
+}
+
+/* Style dla zadań */
+.task-content {
+   background: var(--card-background);
+   border: 1px solid var(--border);
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   padding: 15px;
+   margin: 10px 0;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   transition: background-color 0.3s, border-color 0.3s;
+}
+
+.task-content strong.important {
+   color: var(--priority-color);
+}
+
+.task-details {
+   display: flex;
+   flex-direction: column;
+   font-size: 0.9rem;
+   color: var(--text);
+}
+
+.task-details .icon {
+   color: var(--primary);
+   font-size: 1.5rem;
+   vertical-align: middle;
+   margin-right: 5px;
+}
+
+button {
+   background-color: var(--primary);
+   color: var(--text);
+   border: none;
+   border-radius: 4px;
+   padding: 5px 10px;
+   font-size: 0.9rem;
+   cursor: pointer;
+   margin: 5px;
+   transition: background-color 0.3s;
+}
+
+button:hover {
+   background-color: var(--primary-dark);
+}
+
+/* Styl dla nagłówków */
+.active h2,
+.inactive h3 {
+   border-bottom: 2px solid var(--primary);
+   padding-bottom: 10px;
+   margin-bottom: 20px;
+}
+
+body {
+   font-family: Arial, sans-serif;
+   line-height: 1.6;
+}
+
+h2,
+h3 {
+   font-weight: 600;
+}
+
+:root {
+   --card-background-light: #fff;
+   --card-background-dark: #2e2e2e;
+   --border-light: #ddd;
+   --border-dark: #444;
+   --text-light: #000;
+   --text-dark: #fff;
+}
+
+.dark-mode {
+   --card-background: var(--card-background-dark);
+   --border: var(--border-dark);
+   --text: var(--text-dark);
+}
+
+.light-mode {
+   --card-background: var(--card-background-light);
+   --border: var(--border-light);
+   --text: var(--text-light);
+}
+
+.done-btn,
+.delete-btn {
+   border: none;
+   border-radius: 4px;
+   padding: 10px 15px; /* Upewnij się, że padding jest taki sam dla obu przycisków */
+   font-size: 0.9rem; /* Spójny rozmiar czcionki */
+   cursor: pointer;
+   transition: background-color 0.3s, color 0.3s;
+}
+
+.done-btn {
+   background-color: var(--btn-done-background);
+   color: var(--btn-done-text);
+}
+
+.done-btn:hover {
+   background-color: var(--btn-done-hover-background);
+}
+
+.delete-btn {
+   background-color: var(--btn-delete-background);
+   color: var(--btn-delete-text);
+}
+
+.delete-btn:hover {
+   background-color: var(--btn-delete-hover-background);
+}
+
+.task-buttons {
+   display: flex;
+   gap: 10px; /* Odstęp między przyciskami */
+}
+
+:root {
+   --background-color: #fff; /* Kolor tła dla jasnego motywu */
+   --border-color: #ddd; /* Kolor obramowania dla jasnego motywu */
+   --input-border-color: #ccc; /* Kolor obramowania dla inputów w jasnym motywie */
+   --btn-add-background: #007bff; /* Kolor tła przycisku dodawania w jasnym motywie */
+   --btn-add-text: #fff; /* Kolor tekstu przycisku dodawania w jasnym motywie */
+   --btn-add-hover-background: #0056b3; /* Kolor tła przycisku dodawania po najechaniu w jasnym motywie */
+
+   /* Zmienne dla ciemnego motywu */
+   --dark-background-color: #333; /* Kolor tła dla ciemnego motywu */
+   --dark-border-color: #444; /* Kolor obramowania dla ciemnego motywu */
+   --dark-input-border-color: #555; /* Kolor obramowania dla inputów w ciemnym motywie */
+   --dark-btn-add-background: #1e90ff; /* Kolor tła przycisku dodawania w ciemnym motywie */
+   --dark-btn-add-text: #fff; /* Kolor tekstu przycisku dodawania w ciemnym motywie */
+   --dark-btn-add-hover-background: #187bcd; /* Kolor tła przycisku dodawania po najechaniu w ciemnym motywie */
+}
+:root {
+   --check-color: #28a745; /* Zielony kolor zaznaczenia dla jasnego motywu */
+   --dark-check-color: #4caf50; /* Zielony kolor zaznaczenia dla ciemnego motywu */
+}
+
+/* Stylizacja dla urządzeń mobilnych */
+@media (max-width: 768px) {
+   .theme-toggle {
+      font-size: 0.9rem;
+      padding: 8px 15px;
+      margin: 10px; /* Mniejszy margines na małych ekranach */
+   }
+}
+
+:root {
+   --input-border-color: #cccccc; /* Kolor obramowania dla jasnego motywu */
+   --input-background-color: #ffffff; /* Kolor tła dla jasnego motywu */
+   --input-text-color: #333333; /* Kolor tekstu dla jasnego motywu */
+   --check-color: #007bff; /* Kolor zaznaczenia dla checkboxa w jasnym motywie */
+
+   --dark-input-border-color: #666666; /* Kolor obramowania dla ciemnego motywu */
+   --dark-input-background-color: #333333; /* Kolor tła dla ciemnego motywu */
+   --dark-input-text-color: #ffffff; /* Kolor tekstu dla ciemnego motywu */
+   --dark-check-color: #00ff00; /* Kolor zaznaczenia dla checkboxa w ciemnym motywie */
+}
+
+/* App.css */
+
+/* Kolory tła, ramki i priorytetowe w ciemnym motywie */
+:root {
+   --card-background: #2e2e2e; /* Tło karty w ciemnym motywie */
+   --border: #444; /* Ramka w ciemnym motywie */
+   --priority-border-dark: #b71c1c; /* Ciemna czerwona ramka dla priorytetowych zadań */
+   --priority-background-dark: rgba(
+      97,
+      19,
+      19,
+      0.2
+   ); /* Lekko czerwone tło dla priorytetowych zadań */
+   --text: #f5f5f5; /* Kolor tekstu */
+   --success: #4caf50; /* Kolor sukcesu */
+   --success-dark: #388e3c; /* Ciemniejszy kolor sukcesu */
+   --check-icon-color: #4caf50; /* Kolor ikony potwierdzenia */
+}
+
+/* Stylizacja modala */
+.modal {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.5);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   z-index: 1000;
+}
+
+.modal-content {
+   background: var(--background);
+   padding: 20px;
+   border-radius: 5px;
+   width: 80%;
+   max-width: 600px;
+   max-height: 80%; /* Maksymalna wysokość kontenera */
+   overflow-y: auto; /* Przewijanie w przypadku dużej zawartości */
+   position: relative;
+}
+
+.close {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   font-size: 24px;
+   cursor: pointer;
+   color: var(--text);
+}
+
+.close:hover,
+.close:focus {
+   color: #0056b3;
+}
+
+.link-button {
+   background: #28a745; /* Niebieskie tło przycisku */
+   border: none;
+   color: #fff;
+   cursor: pointer;
+   padding: 0;
+   font-size: 40px;
+   font-family: inherit;
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   z-index: 1000;
+   transition: all 0.3s ease; /* Dodaje płynne przejście dla wszystkich właściwości */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%; /* Sprawia, że przycisk ma okrągły kształt */
+   width: 60px; /* Początkowa szerokość przycisku */
+   height: 60px; /* Początkowa wysokość przycisku */
+   overflow: hidden; /* Ukrywa tekst, który wychodzi poza okrąg */
+}
+
+.link-button span {
+   display: none; /* Ukrywa tekst początkowo */
+}
+
+.link-button:hover {
+   background: #28a745; /* Zielone tło przycisku po najechaniu */
+   width: 200px; /* Szerokość przycisku po najechaniu */
+   height: 60px; /* Wysokość przycisku po najechaniu */
+   border-radius: 30px;
+   transition: all 0.3s ease; /* Płynna animacja */
+}
+
+.link-button:hover span {
+   display: inline; /* Pokazuje tekst po najechaniu */
+   margin-left: 10px; /* Odstęp między ikoną a tekstem */
+}
+
+.link-button:hover::before {
+   content: "Dodaj nowe zadanie"; /* Tekst wyświetlany po najechaniu */
+   font-size: 1rem; /* Rozmiar czcionki tekstu */
+}
+
+.link-button::before {
+   content: "+";
+   font-size: 2rem; /* Rozmiar czcionki ikony */
+}
+
+.link-button span {
+   color: #fff; /* Kolor tekstu */
+   font-size: 1rem; /* Rozmiar czcionki */
+}

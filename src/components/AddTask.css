@@ -1,0 +1,121 @@
+.add-task-container {
+   background: var(--background-color);
+   border: 1px solid var(--border-color);
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   padding: 20px;
+   margin: 20px auto;
+   width: 80vw;
+   max-width: 600px;
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.text-container,
+.date-container,
+.important-container {
+   margin-bottom: 1rem; /* Odstęp poniżej każdego kontenera */
+   width: 100%; /* Ustawia szerokość kontenerów na 100% */
+   max-width: 500px; /* Maksymalna szerokość kontenerów */
+}
+
+.text-label,
+.date-label,
+.important-label {
+   display: block;
+   font-weight: bold;
+   margin-bottom: 0.5rem; /* Odstęp poniżej etykiety */
+}
+
+.add-task-container input[type="text"],
+.add-task-container input[type="date"] {
+   border: 1px solid var(--input-border-color);
+   border-radius: 4px;
+   padding: 10px;
+   font-size: 1rem;
+   width: 100%; /* Pełna szerokość kontenera */
+   box-sizing: border-box;
+   margin-bottom: 15px; /* Odstęp między polami a przyciskiem */
+   background-color: var(--input-background-color); /* Tło dla jasnego motywu */
+   color: var(--input-text-color); /* Kolor tekstu */
+}
+
+/* Dark theme adjustments */
+.dark-theme .add-task-container {
+   background: var(--dark-background-color);
+   border: 1px solid var(--dark-border-color);
+}
+
+.dark-theme .add-task-container input[type="text"],
+.dark-theme .add-task-container input[type="date"] {
+   border: 1px solid var(--dark-input-border-color);
+   background-color: var(
+      --dark-input-background-color
+   ); /* Przywracamy ciemne tło */
+   color: var(--dark-input-text-color); /* Kolor tekstu dla ciemnego motywu */
+}
+
+.add-task-container input[type="checkbox"] {
+   margin-right: 10px; /* Odstęp od tekstu */
+   cursor: pointer;
+   width: 20px;
+   height: 20px;
+   accent-color: var(--check-color);
+   vertical-align: middle; /* Zachowuje vertical alignment */
+}
+
+.dark-theme .add-task-container input[type="checkbox"] {
+   accent-color: var(--dark-check-color);
+}
+
+.add-task-container button {
+   background-color: var(--btn-add-background);
+   color: var(--btn-add-text);
+   border: none;
+   border-radius: 4px;
+   padding: 10px 15px;
+   font-size: 1rem;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.add-task-container button:hover {
+   background-color: var(--btn-add-hover-background);
+}
+
+.dark-theme .add-task-container button {
+   background-color: var(--dark-btn-add-background);
+   color: var(--dark-btn-add-text);
+}
+
+.dark-theme .add-task-container button:hover {
+   background-color: var(--dark-btn-add-hover-background);
+}
+
+/* Error message styles */
+.error {
+   color: red;
+   font-size: 0.75rem;
+   margin-top: -0.3rem;
+   margin-bottom: 0.5rem;
+}
+
+/* Ensure checkbox and label are aligned */
+.important-container {
+   display: flex; /* Use flexbox for alignment */
+   align-items: center; /* Vertically center items */
+   justify-content: center; /* Center items horizontally */
+}
+
+.important-container input[type="checkbox"] {
+   margin-right: 10px; /* Odstęp od tekstu */
+}
+
+.important-container label {
+   display: flex; /* Ensure label is also a flex container */
+   align-items: center; /* Center items vertically within the label */
+   font-weight: bold; /* Make the text bold like the labels */
+   margin: 0; /* Remove default margin to ensure proper alignment */
+}

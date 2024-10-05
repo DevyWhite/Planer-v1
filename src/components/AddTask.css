@@ -42,6 +42,32 @@
    color: var(--input-text-color); /* Kolor tekstu */
 }
 
+.subtask-container {
+   background: var(--subtask-background-color);
+   border: 1px solid var(--subtask-border-color);
+   padding: 30px; /* Zwiększ padding */
+   margin-top: 30px; /* Większy odstęp od góry */
+   border-radius: 8px; /* Zaokrąglenie rogów */
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Cień dla sekcji podzadań */
+}
+
+.subtask-header {
+   display: flex; /* Użyj flexbox dla nagłówka */
+   align-items: center; /* Wyśrodkowanie w pionie */
+   cursor: pointer; /* Zmiana kursora, gdy można kliknąć */
+   margin-bottom: 10px; /* Odstęp od podzadań */
+   font-weight: bold; /* Pogrubienie nagłówka */
+}
+
+.subtask-input {
+   margin-bottom: 10px; /* Odstęp między polami */
+   width: calc(100% - 20px); /* Pełna szerokość z marginesem */
+   padding: 8px; /* Padding wewnętrzny */
+   border: 1px solid var(--subtask-input-border-color); /* Granica dla pola tekstowego */
+   border-radius: 4px; /* Zaokrąglenie rogów */
+   background-color: var(--subtask-input-background-color); /* Tło dla pola */
+}
+
 /* Dark theme adjustments */
 .dark-theme .add-task-container {
    background: var(--dark-background-color);
@@ -66,56 +92,29 @@
    vertical-align: middle; /* Zachowuje vertical alignment */
 }
 
-.dark-theme .add-task-container input[type="checkbox"] {
-   accent-color: var(--dark-check-color);
+.dark-theme .subtask-container {
+   background: var(--dark-subtask-background-color);
+   border: 1px solid var(--dark-subtask-border-color);
 }
 
-.add-task-container button {
-   background-color: var(--btn-add-background);
-   color: var(--btn-add-text);
-   border: none;
-   border-radius: 4px;
-   padding: 10px 15px;
-   font-size: 1rem;
-   cursor: pointer;
-   transition: background-color 0.3s;
-}
-
-.add-task-container button:hover {
-   background-color: var(--btn-add-hover-background);
-}
-
-.dark-theme .add-task-container button {
-   background-color: var(--dark-btn-add-background);
-   color: var(--dark-btn-add-text);
-}
-
-.dark-theme .add-task-container button:hover {
-   background-color: var(--dark-btn-add-hover-background);
-}
-
-/* Error message styles */
 .error {
-   color: red;
-   font-size: 0.75rem;
-   margin-top: -0.3rem;
-   margin-bottom: 0.5rem;
+   color: red; /* Kolor błędu */
+   font-size: 0.9rem; /* Mniejszy rozmiar czcionki */
+   margin-top: 5px; /* Odstęp nad błędem */
 }
 
-/* Ensure checkbox and label are aligned */
-.important-container {
-   display: flex; /* Use flexbox for alignment */
-   align-items: center; /* Vertically center items */
-   justify-content: center; /* Center items horizontally */
+.add-subtask-button {
+   background-color: var(--button-background-color); /* Kolor tła przycisku */
+   color: #fff; /* Kolor tekstu */
+   border: none; /* Bez obramowania */
+   padding: 10px 15px; /* Wewnętrzny odstęp */
+   border-radius: 5px; /* Zaokrąglenie rogów */
+   cursor: pointer; /* Zmiana kursora */
+   transition: background-color 0.3s; /* Animacja zmiany koloru tła */
 }
 
-.important-container input[type="checkbox"] {
-   margin-right: 10px; /* Odstęp od tekstu */
-}
-
-.important-container label {
-   display: flex; /* Ensure label is also a flex container */
-   align-items: center; /* Center items vertically within the label */
-   font-weight: bold; /* Make the text bold like the labels */
-   margin: 0; /* Remove default margin to ensure proper alignment */
+.add-subtask-button:hover {
+   background-color: var(
+      --button-hover-background-color
+   ); /* Kolor tła przycisku po najechaniu */
 }

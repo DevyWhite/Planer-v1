@@ -1,63 +1,116 @@
-/* Task.css */
-
-/* Kontener dla zadania */
-.task-content {
-   background: var(--card-background); /* Tło karty w ciemnym motywie */
-   border: 1px solid var(--border); /* Ramka w ciemnym motywie */
-   border-radius: 8px;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-   padding: 15px;
-   margin: 10px 0;
-   display: flex;
-   flex-direction: column;
-   transition: background-color 0.3s, border-color 0.3s; /* Przejścia dla płynnych zmian */
-}
-
-/* Nagłówek zadań */
 .task-header {
    display: flex;
    justify-content: space-between;
    align-items: center;
-   margin-bottom: 10px;
 }
 
-/* Styl dla priorytetowych zadań */
-.task-content.important {
-   border: 2px solid var(--priority-border-dark); /* Ciemna czerwona ramka */
-   background-color: var(
-      --priority-background-dark
-   ); /* Lekko czerwone tło dla ciemnego motywu */
+.task-buttons {
+   display: flex;
+   gap: 10px;
 }
 
-/* Przycisk 'Zostało zrobione' */
 .done-btn {
-   background-color: var(--success); /* Używamy zmiennej z App.css */
-   color: var(--text);
+   background-color: #28a745;
+   color: white;
    border: none;
-   border-radius: 4px;
    padding: 5px 10px;
-   font-size: 0.9rem;
+   border-radius: 5px;
    cursor: pointer;
-   transition: background-color 0.3s;
 }
 
-.done-btn:hover {
-   background-color: var(--success-dark); /* Używamy zmiennej z App.css */
+.delete-btn {
+   background-color: #dc3545;
+   color: white;
+   border: none;
+   padding: 5px 10px;
+   border-radius: 5px;
+   cursor: pointer;
 }
 
-/* Szczegóły zadania */
+.details-btn {
+   .task-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      background-color: #fff;
+   }
+
+   .task-buttons {
+      display: flex;
+      gap: 10px;
+   }
+
+   .done-btn {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+   }
+
+   .delete-btn {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+   }
+
+   .details-btn {
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+   }
+
+   .task-details {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+   }
+
+   .details {
+      background-color: #f9f9f9; /* Kolor tła */
+      padding: 10px; /* Marginesy */
+      border: 1px solid #ddd; /* Obramowanie */
+      border-radius: 5px; /* Zaokrąglone rogi */
+   }
+
+   .details p {
+      margin: 0; /* Usunięcie marginesu */
+   }
+
+   background: transparent;
+   border: none;
+   cursor: pointer;
+   color: #007bff; /* Możesz dostosować kolor */
+}
+
 .task-details {
-   font-size: 0.9rem;
+   margin-top: 10px;
 }
 
-/* Ikony */
-.icon {
-   font-size: 1.2rem; /* Rozmiar ikon */
-   vertical-align: middle; /* Wyrównanie pionowe ikon z tekstem */
-   margin-right: 5px; /* Odstęp między ikoną a tekstem */
+.details {
+   max-height: 200px; /* Ustaw maksymalną wysokość */
+   overflow-y: auto; /* Dodaj przewijanie */
+   border: 1px solid #ccc; /* Dodaj ramkę dla estetyki */
+   padding: 10px; /* Padding dla lepszego wyglądu */
+   border-radius: 5px; /* Zaokrąglone rogi */
 }
 
-/* Ikona potwierdzenia (FaCheck) */
-.icon.fa-check {
-   color: var(--check-icon-color); /* Zielony kolor dla FaCheck */
+.subtask {
+   cursor: pointer; /* Zmiana kursora na wskaźnik */
+}
+
+.completed {
+   text-decoration: line-through; /* Przekreślenie tekstu */
+   color: #999; /* Szary kolor dla przekreślonych subtasków */
 }

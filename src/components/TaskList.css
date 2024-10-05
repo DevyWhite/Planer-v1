@@ -1,70 +1,15 @@
-/* TaskList.css */
-
-/* Sekcja zadań */
 .task-section {
    margin-bottom: 20px;
-   padding: 10px; /* Dodaj padding dla estetyki */
 }
 
-/* Kontener dla listy zadań */
+.line {
+   border: 0;
+   height: 1px;
+   background: #ccc;
+   margin: 10px 0;
+}
+
 .task-list {
    display: flex;
-   flex-wrap: wrap;
-   gap: 15px; /* Odstęp między kartami */
-   padding: 20px 10px; /* Dodaj padding */
-   box-sizing: border-box; /* Upewnij się, że padding i margines są uwzględnione w szerokości */
-}
-
-/* Karta zadania */
-.task-card {
-   background: var(--card-background); /* Używamy zmiennej z App.css */
-   border: 1px solid var(--border); /* Używamy zmiennej z App.css */
-   border-radius: 8px;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-   padding: 15px;
-   flex: 1 1 calc(33.333% - 30px); /* 3 kolumny z odstępem */
-   box-sizing: border-box;
-   transition: transform 0.3s, box-shadow 0.3s;
-   color: var(--text); /* Używamy zmiennej z App.css */
-}
-
-/* Styl dla priorytetowych zadań */
-.task-card.important {
-   border: 2px solid var(--priority-border-dark); /* Ciemna czerwona ramka */
-   background-color: var(
-      --priority-background-dark
-   ); /* Lekko czerwone tło dla ciemnego motywu */
-}
-
-.task-card:hover {
-   transform: translateY(-5px);
-   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Linia oddzielająca sekcje */
-.line {
-   width: 100%;
-   border: 0;
-   border-top: 2px solid var(--line-color); /* Niebieska kreska */
-   margin-bottom: 10px;
-}
-
-/* Nagłówki */
-h2,
-h3 {
-   margin: 0;
-   color: var(--text); /* Używamy zmiennej z App.css */
-}
-
-/* Responsywność */
-@media (max-width: 768px) {
-   .task-card {
-      flex: 1 1 calc(50% - 30px); /* 2 kolumny na mniejszych ekranach */
-   }
-}
-
-@media (max-width: 480px) {
-   .task-card {
-      flex: 1 1 100%; /* 1 kolumna na najmniejszych ekranach */
-   }
+   flex-direction: column;
 }

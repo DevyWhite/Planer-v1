@@ -69,16 +69,11 @@
 
 .details {
    background-color: transparent;
-   border: 1px solid #464545; /* Obramowanie */
-   border-radius: 5px; /* Zaokrąglone rogi */
-}
-
-.details {
-   max-height: 200px; /* Ustaw maksymalną wysokość */
-   overflow-y: auto; /* Dodaj przewijanie */
-   border: 1px solid #ccc; /* Dodaj ramkę dla estetyki */
-   padding: 10px; /* Padding dla lepszego wyglądu */
-   border-radius: 5px; /* Zaokrąglone rogi */
+   max-height: 200px;
+   overflow-y: auto;
+   border: 1px solid #ccc;
+   padding: 10px;
+   border-radius: 0 0 10px 10px;
 }
 
 .subtask {

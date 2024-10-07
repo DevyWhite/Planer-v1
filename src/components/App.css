@@ -75,37 +75,11 @@
    min-height: 100vh; /* Zapewnia, że kontener zajmuje co najmniej wysokość okna */
 }
 
-/* Przycisk do przełączania motywów */
-.theme-toggle {
-   position: relative; /* Pozwala przyciskowi pozostać na normalnej pozycji w dokumencie */
-   display: inline-block; /* Umożliwia ustawienie marginesów i paddingu */
-   background-color: var(--toggle-button-background); /* Tło przycisku */
-   color: var(--toggle-button-text); /* Kolor tekstu przycisku */
-   border: none;
-   border-radius: 8px;
-   padding: 10px 20px;
-   font-size: 1rem;
-   cursor: pointer;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-   transition: background-color 0.3s, color 0.3s;
-   margin: 20px; /* Dodaje margines wokół przycisku */
-   align-self: flex-end; /* Umieszcza przycisk na dole kontenera */
-}
-
-.theme-toggle:hover {
-   background-color: var(--toggle-button-hover-background);
-   color: var(--toggle-button-hover-text);
-}
-
-/* Dark theme button styles */
-.dark-theme .theme-toggle {
-   background-color: var(--dark-toggle-button-background);
-   color: var(--dark-toggle-button-text);
-}
-
-.dark-theme .theme-toggle:hover {
-   background-color: var(--dark-toggle-button-hover-background);
-   color: var(--dark-toggle-button-hover-text);
+.bottom-left {
+   position: absolute;
+   bottom: 20px;
+   left: 20px;
+   z-index: 1000;
 }
 
 /* Style dla zadań */
@@ -230,22 +204,28 @@ h3 {
 
 :root {
    --background-color: #fff; /* Kolor tła dla jasnego motywu */
+   --light-hover-background-color: #cac8c8; /* Kolor tła dla jasnego motywu(hover) */
    --border-color: #ddd; /* Kolor obramowania dla jasnego motywu */
    --input-border-color: #ccc; /* Kolor obramowania dla inputów w jasnym motywie */
    --btn-add-background: #007bff; /* Kolor tła przycisku dodawania w jasnym motywie */
    --btn-add-text: #fff; /* Kolor tekstu przycisku dodawania w jasnym motywie */
    --btn-add-hover-background: #0056b3; /* Kolor tła przycisku dodawania po najechaniu w jasnym motywie */
+   --light-danger-background-color: #ffcccc; /* Tło dla ważnego zadania w jasnym motywie */
+   --light-danger-text-color: #d80000; /* Tekst dla ważnego zadania w jasnym motywie */
+   --light-danger-hover-background-color: #ffaaaa; /* Tło na hover dla ważnego zadania w jasnym motywie */
+   --check-color: #28a745; /* Zielony kolor zaznaczenia dla jasnego motywu */
 
    /* Zmienne dla ciemnego motywu */
-   --dark-background-color: #333; /* Kolor tła dla ciemnego motywu */
+   --dark-background-color: #1f1f1f; /* Kolor tła dla ciemnego motywu */
+   --dark-hover-background-color: #4b4b4b; /* Kolor tła dla ciemnego motywu (hover) */
    --dark-border-color: #444; /* Kolor obramowania dla ciemnego motywu */
    --dark-input-border-color: #555; /* Kolor obramowania dla inputów w ciemnym motywie */
    --dark-btn-add-background: #1e90ff; /* Kolor tła przycisku dodawania w ciemnym motywie */
    --dark-btn-add-text: #fff; /* Kolor tekstu przycisku dodawania w ciemnym motywie */
    --dark-btn-add-hover-background: #187bcd; /* Kolor tła przycisku dodawania po najechaniu w ciemnym motywie */
-}
-:root {
-   --check-color: #28a745; /* Zielony kolor zaznaczenia dla jasnego motywu */
+   --dark-danger-background-color: #660000; /* Tło dla ważnego zadania w ciemnym motywie */
+   --dark-danger-text-color: #ffcccc; /* Tekst dla ważnego zadania w ciemnym motywie */
+   --dark-danger-hover-background-color: #993333; /* Tło na hover dla ważnego zadania w ciemnym motywie */
    --dark-check-color: #4caf50; /* Zielony kolor zaznaczenia dla ciemnego motywu */
 }
 
@@ -308,8 +288,8 @@ h3 {
    padding: 20px;
    border-radius: 5px;
    width: 80%;
-   max-width: 600px;
-   max-height: 80%; /* Maksymalna wysokość kontenera */
+   max-width: 40%;
+   max-height: 90%; /* Maksymalna wysokość kontenera */
    overflow-y: auto; /* Przewijanie w przypadku dużej zawartości */
    position: relative;
 }

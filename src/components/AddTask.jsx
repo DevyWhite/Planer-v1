@@ -71,14 +71,8 @@ const AddTask = ({ onClick, onClose }) => {
       }
    };
 
-   const toggleSubtaskCompletion = (index) => {
-      setAdditionalList((prev) =>
-         prev.map((subtask, i) =>
-            i === index
-               ? { ...subtask, completed: !subtask.completed }
-               : subtask
-         )
-      );
+   const subtaskDelete = (index) => {
+      setAdditionalList((prev) => prev.filter((_, i) => i !== index));
    };
 
    const { text, date, important } = newTask;
@@ -97,7 +91,11 @@ const AddTask = ({ onClick, onClose }) => {
                value={text}
                onChange={handleInputChange}
             />
-            {textError && <div className='error'>{textError}</div>}
+            {textError && (
+               <div class='alert alert-danger' role='alert'>
+                  {textError}
+               </div>
+            )}
          </div>
 
          <div className='date-container'>
@@ -111,7 +109,11 @@ const AddTask = ({ onClick, onClose }) => {
                value={date}
                onChange={handleInputChange}
             />
-            {dateError && <div className='error'>{dateError}</div>}
+            {dateError && (
+               <div class='alert alert-danger' role='alert'>
+                  {dateError}
+               </div>
+            )}
          </div>
 
          <div className='important-container'>
@@ -142,25 +144,28 @@ const AddTask = ({ onClick, onClose }) => {
                   />
                   <button
                      onClick={handleAddSubtask}
-                     className='add-subtask-button'
+                     class='btn btn-outline-success'
                   >
                      Dodaj podzadanie
                   </button>
-                  {additionalList.map((subtask, index) => (
-                     <div key={index}>
-                        <input
-                           type='checkbox'
-                           checked={subtask.completed}
-                           onChange={() => toggleSubtaskCompletion(index)}
-                        />
-                        <span>{subtask.text}</span>
-                     </div>
-                  ))}
+                  <ul class='list-group'>
+                     {additionalList.map((subtask, index) => (
+                        <li
+                           key={index}
+                           onClick={() => subtaskDelete(index)}
+                           class='list-group-item list-group-item-action'
+                        >
+                           {subtask.text}
+                        </li>
+                     ))}
+                  </ul>
                </>
             )}
          </div>
 
-         <button onClick={handleAddTask}>Dodaj zadanie</button>
+         <button class='btn btn-outline-primary' onClick={handleAddTask}>
+            Dodaj zadanie
+         </button>
       </div>
    );
 };

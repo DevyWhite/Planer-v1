@@ -27,75 +27,50 @@
    cursor: pointer;
 }
 
-.details-btn {
-   .task-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-bottom: 10px;
-      background-color: #fff;
-   }
+.task-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   margin-bottom: 10px;
+   background-color: #fff;
+}
 
-   .task-buttons {
-      display: flex;
-      gap: 10px;
-   }
+.task-buttons {
+   display: flex;
+   gap: 10px;
+}
 
-   .done-btn {
-      background-color: #4caf50;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-   }
-
-   .delete-btn {
-      background-color: #f44336;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-   }
-
-   .details-btn {
-      background-color: #2196f3;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-   }
-
-   .task-details {
-      margin-top: 10px;
-      display: flex;
-      flex-direction: column;
-   }
-
-   .details {
-      background-color: #f9f9f9; /* Kolor tła */
-      padding: 10px; /* Marginesy */
-      border: 1px solid #ddd; /* Obramowanie */
-      border-radius: 5px; /* Zaokrąglone rogi */
-   }
-
-   .details p {
-      margin: 0; /* Usunięcie marginesu */
-   }
-
-   background: transparent;
+.done-btn {
+   background-color: #4caf50;
+   color: white;
    border: none;
+   padding: 5px 10px;
+   border-radius: 5px;
    cursor: pointer;
-   color: #007bff; /* Możesz dostosować kolor */
+}
+
+.delete-btn {
+   background-color: #f44336;
+   color: white;
+   border: none;
+   padding: 5px 10px;
+   border-radius: 5px;
+   cursor: pointer;
 }
 
 .task-details {
-   margin-top: 10px;
+   margin-bottom: 1rem;
+   display: flex;
+   flex-direction: column;
+}
+
+.details {
+   background-color: transparent;
+   border: 1px solid #464545; /* Obramowanie */
+   border-radius: 5px; /* Zaokrąglone rogi */
 }
 
 .details {
@@ -113,4 +88,10 @@
 .completed {
    text-decoration: line-through; /* Przekreślenie tekstu */
    color: #999; /* Szary kolor dla przekreślonych subtasków */
+}
+
+.check-icon {
+   color: var(--check-icon-color);
+   font-size: 1.5rem;
+   margin-right: 0, 5rem;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaCheck, FaSearch } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 import "./Task.css";
 
 const Task = ({ task, click, inactive, done }) => {
@@ -35,10 +35,21 @@ const Task = ({ task, click, inactive, done }) => {
          <p>Brak podzadań</p>
       );
 
+   const itemStyle = `list-group-item ${
+      task.important ? "list-group-item-danger" : ""
+   }`;
+
    return (
-      <div>
-         <div className='task-header'>
+      <ul className='list-group'>
+         <li className={itemStyle} onClick={toggleDetails}>
             <strong>{task.text}</strong>
+            {!inactive && <div>Zrobić do: {task.date}</div>}
+            {inactive && (
+               <div>
+                  <FaCheck className='check-icon' /> Wyokonano:{" "}
+                  {task.finishDate}
+               </div>
+            )}
             <div className='task-buttons'>
                {!inactive && (
                   <button onClick={() => done(task.id)} className='done-btn'>
@@ -48,27 +59,17 @@ const Task = ({ task, click, inactive, done }) => {
                <button onClick={() => click(task.id)} className='delete-btn'>
                   Usuń
                </button>
-               <button onClick={toggleDetails} className='details-btn'>
-                  <FaSearch /> {/* Ikona lupy */}
-               </button>
             </div>
-         </div>
+         </li>
          <div className='task-details'>
             {isDetailsVisible && (
                <div className='details'>
                   <h4>Szczegóły zadania</h4>
                   <div>{addList}</div>
-                  {inactive && (
-                     <div>
-                        <FaCheck className='icon check-icon' /> Wyokonano:{" "}
-                        {task.finishDate}
-                     </div>
-                  )}
-                  {!inactive && <div>Zrobić do: {task.date}</div>}
                </div>
             )}
          </div>
-      </div>
+      </ul>
    );
 };
 

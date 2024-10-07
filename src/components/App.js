@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import AddTask from "./AddTask";
 import TaskList from "./TaskList";
@@ -88,7 +89,10 @@ const App = () => {
             delete={deleteTask}
             done={markDoneTask}
          />
-         <button onClick={toggleTheme} className='theme-toggle'>
+         <button
+            onClick={toggleTheme}
+            className='btn btn-outline-dark bottom-left'
+         >
             {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
          </button>
       </div>

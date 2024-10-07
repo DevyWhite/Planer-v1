@@ -13,20 +13,18 @@
    align-items: center;
 }
 
-.text-container,
-.date-container,
-.important-container {
-   margin-bottom: 1rem; /* Odstęp poniżej każdego kontenera */
-   width: 100%; /* Ustawia szerokość kontenerów na 100% */
-   max-width: 500px; /* Maksymalna szerokość kontenerów */
+.add-task-container__text-container,
+.add-task-container__date-container,
+.add-task-container__important-container {
+   margin-bottom: 1rem;
+   width: 100%;
+   max-width: 500px;
 }
 
-.text-label,
-.date-label,
-.important-label {
+.add-task-container__label {
    display: block;
    font-weight: bold;
-   margin-bottom: 0.5rem; /* Odstęp poniżej etykiety */
+   margin-bottom: 0.5rem;
 }
 
 .add-task-container input[type="text"],
@@ -35,37 +33,65 @@
    border-radius: 4px;
    padding: 10px;
    font-size: 1rem;
-   width: 100%; /* Pełna szerokość kontenera */
+   width: 100%;
    box-sizing: border-box;
-   margin-bottom: 15px; /* Odstęp między polami a przyciskiem */
-   background-color: var(--input-background-color); /* Tło dla jasnego motywu */
-   color: var(--input-text-color); /* Kolor tekstu */
+   margin-bottom: 15px;
+   background-color: var(--input-background-color);
+   color: var(--input-text-color);
 }
 
 .subtask-container {
    background: var(--subtask-background-color);
    border: 1px solid var(--subtask-border-color);
-   padding: 30px; /* Zwiększ padding */
-   margin-top: 30px; /* Większy odstęp od góry */
-   border-radius: 8px; /* Zaokrąglenie rogów */
-   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Cień dla sekcji podzadań */
+   padding: 30px;
+   margin-top: 30px;
+   margin-bottom: 30px;
+   border-radius: 8px;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .subtask-header {
-   display: flex; /* Użyj flexbox dla nagłówka */
-   align-items: center; /* Wyśrodkowanie w pionie */
-   cursor: pointer; /* Zmiana kursora, gdy można kliknąć */
-   margin-bottom: 10px; /* Odstęp od podzadań */
-   font-weight: bold; /* Pogrubienie nagłówka */
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+   font-weight: bold;
 }
 
 .subtask-input {
-   margin-bottom: 10px; /* Odstęp między polami */
-   width: calc(100% - 20px); /* Pełna szerokość z marginesem */
-   padding: 8px; /* Padding wewnętrzny */
-   border: 1px solid var(--subtask-input-border-color); /* Granica dla pola tekstowego */
-   border-radius: 4px; /* Zaokrąglenie rogów */
-   background-color: var(--subtask-input-background-color); /* Tło dla pola */
+   margin-bottom: 10px;
+   width: calc(100% - 20px);
+   padding: 8px;
+   border: 1px solid var(--subtask-input-border-color);
+   border-radius: 4px;
+   background-color: var(--subtask-input-background-color);
+}
+
+.add-subtask-button {
+   background-color: red;
+   color: var(--toggle-button-text);
+   border: none;
+   padding: 10px 15px;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s, opacity 0.3s;
+}
+
+.add-subtask-button:hover {
+   background-color: rgb(92, 0, 0);
+   opacity: 0.8;
+}
+
+.task-list-item {
+   margin: 10px 0;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   background-color: #f9f9f9;
+   transition: background-color 0.3s;
+}
+
+.task-list-item:hover {
+   background-color: #eaeaea;
 }
 
 /* Dark theme adjustments */
@@ -74,22 +100,12 @@
    border: 1px solid var(--dark-border-color);
 }
 
+/* Dodaj styl dla dark-theme */
 .dark-theme .add-task-container input[type="text"],
 .dark-theme .add-task-container input[type="date"] {
    border: 1px solid var(--dark-input-border-color);
-   background-color: var(
-      --dark-input-background-color
-   ); /* Przywracamy ciemne tło */
-   color: var(--dark-input-text-color); /* Kolor tekstu dla ciemnego motywu */
-}
-
-.add-task-container input[type="checkbox"] {
-   margin-right: 10px; /* Odstęp od tekstu */
-   cursor: pointer;
-   width: 20px;
-   height: 20px;
-   accent-color: var(--check-color);
-   vertical-align: middle; /* Zachowuje vertical alignment */
+   background-color: var(--dark-input-background-color);
+   color: var(--dark-input-text-color);
 }
 
 .dark-theme .subtask-container {
@@ -97,24 +113,63 @@
    border: 1px solid var(--dark-subtask-border-color);
 }
 
-.error {
-   color: red; /* Kolor błędu */
-   font-size: 0.9rem; /* Mniejszy rozmiar czcionki */
-   margin-top: 5px; /* Odstęp nad błędem */
+.add-task-container input[type="checkbox"] {
+   margin-right: 10px;
+   cursor: pointer;
+   width: 20px;
+   height: 20px;
+   accent-color: var(--check-color);
+   vertical-align: middle;
 }
 
-.add-subtask-button {
-   background-color: var(--button-background-color); /* Kolor tła przycisku */
-   color: #fff; /* Kolor tekstu */
-   border: none; /* Bez obramowania */
-   padding: 10px 15px; /* Wewnętrzny odstęp */
-   border-radius: 5px; /* Zaokrąglenie rogów */
-   cursor: pointer; /* Zmiana kursora */
-   transition: background-color 0.3s; /* Animacja zmiany koloru tła */
+/* Styl dla elementów listy w jasnym motywie */
+.list-group-item {
+   background-color: var(--light-background-color) !important;
+   color: var(--light-text-color) !important;
 }
 
-.add-subtask-button:hover {
-   background-color: var(
-      --button-hover-background-color
-   ); /* Kolor tła przycisku po najechaniu */
+/* Kolor na hover dla jasnego motywu */
+.list-group-item:hover {
+   background-color: var(--light-hover-background-color) !important;
+}
+
+/* Styl dla elementów listy w ciemnym motywie */
+.dark-theme .list-group-item {
+   background-color: var(--dark-background-color) !important;
+   color: var(--dark-text-color) !important;
+}
+
+/* Kolor na hover dla ciemnego motywu */
+.dark-theme .list-group-item:hover {
+   background-color: var(--dark-hover-background-color) !important;
+}
+
+.list-group-item:hover {
+   cursor: pointer;
+}
+
+/* Styl dla elementów listy w jasnym motywie dla zadania ważnego */
+.list-group-item-danger {
+   background-color: var(--light-danger-background-color) !important;
+   color: var(--light-danger-text-color) !important;
+}
+
+/* Kolor na hover dla jasnego motywu z zadaniem ważnym */
+.list-group-item-danger:hover {
+   background-color: var(--light-danger-hover-background-color) !important;
+}
+
+/* Styl dla elementów listy w ciemnym motywie dla zadania ważnego */
+.dark-theme .list-group-item-danger {
+   background-color: var(--dark-danger-background-color) !important;
+   color: var(--dark-danger-text-color) !important;
+}
+
+/* Kolor na hover dla ciemnego motywu z zadaniem ważnym */
+.dark-theme .list-group-item-danger:hover {
+   background-color: var(--dark-danger-hover-background-color) !important;
+}
+
+.btn-outline-success {
+   margin-bottom: 1rem;
 }

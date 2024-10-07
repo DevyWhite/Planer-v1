@@ -52,11 +52,17 @@ const Task = ({ task, click, inactive, done }) => {
             )}
             <div className='task-buttons'>
                {!inactive && (
-                  <button onClick={() => done(task.id)} className='done-btn'>
-                     Zostało zrobione
+                  <button
+                     onClick={() => done(task.id)}
+                     className='btn btn-success done-btn2'
+                  >
+                     Zrobione
                   </button>
                )}
-               <button onClick={() => click(task.id)} className='delete-btn'>
+               <button
+                  onClick={() => click(task.id)}
+                  className='btn btn-danger delete-btn2'
+               >
                   Usuń
                </button>
             </div>

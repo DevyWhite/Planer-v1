@@ -9,24 +9,6 @@
    gap: 10px;
 }
 
-.done-btn {
-   background-color: #28a745;
-   color: white;
-   border: none;
-   padding: 5px 10px;
-   border-radius: 5px;
-   cursor: pointer;
-}
-
-.delete-btn {
-   background-color: #dc3545;
-   color: white;
-   border: none;
-   padding: 5px 10px;
-   border-radius: 5px;
-   cursor: pointer;
-}
-
 .task-header {
    display: flex;
    justify-content: space-between;

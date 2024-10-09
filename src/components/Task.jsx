@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import "./Task.css";
 
 const Task = ({ task, click, inactive, done, edit, undo }) => {
    const [isDetailsVisible, setIsDetailsVisible] = useState(false);
    const [subtasks, setSubtasks] = useState(task.subtasks || []);
+
+   // Synchronizacja stanu subtasks z props
+   useEffect(() => {
+      setSubtasks(task.subtasks || []);
+   }, [task]);
 
    const toggleDetails = () => {
       setIsDetailsVisible((prev) => !prev);

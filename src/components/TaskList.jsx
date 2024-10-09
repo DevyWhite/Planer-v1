@@ -8,7 +8,12 @@ const TaskList = (props) => {
          className={`task-card ${task.important ? "important" : ""}`}
          key={task.id}
       >
-         <Task task={task} click={props.delete} done={props.done} />
+         <Task
+            task={task}
+            click={props.delete}
+            done={props.done}
+            edit={props.edit}
+         />
       </div>
    ));
    const inactiveTaskList = props.inactiveTasks.map((task) => (
@@ -16,7 +21,12 @@ const TaskList = (props) => {
          className={`task-card ${task.important ? "important" : ""}`}
          key={task.id}
       >
-         <Task task={task} click={props.delete} inactive={true} />
+         <Task
+            task={task}
+            click={props.delete}
+            inactive={true}
+            undo={props.undo}
+         />
       </div>
    ));
    return (

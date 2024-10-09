@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import "./Task.css";
 
-const Task = ({ task, click, inactive, done }) => {
+const Task = ({ task, click, inactive, done, edit, undo }) => {
    const [isDetailsVisible, setIsDetailsVisible] = useState(false);
    const [subtasks, setSubtasks] = useState(task.subtasks || []);
 
@@ -52,12 +52,18 @@ const Task = ({ task, click, inactive, done }) => {
             )}
             <div className='task-buttons'>
                {!inactive && (
-                  <button
-                     onClick={() => done(task.id)}
-                     className='btn btn-success done-btn2'
-                  >
-                     Zrobione
-                  </button>
+                  <>
+                     <button
+                        onClick={() => done(task.id)}
+                        className='btn btn-success done-btn2'
+                     >
+                        Zrobione
+                     </button>
+                     <button onClick={() => edit(task)}>Edytuj</button>
+                  </>
+               )}
+               {inactive && (
+                  <button onClick={() => undo(task.id)}>Cofnij</button>
                )}
                <button
                   onClick={() => click(task.id)}

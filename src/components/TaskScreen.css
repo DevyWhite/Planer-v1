@@ -144,10 +144,6 @@
    background-color: var(--dark-hover-background-color) !important;
 }
 
-.list-group-item:hover {
-   cursor: pointer;
-}
-
 /* Styl dla elementów listy w jasnym motywie dla zadania ważnego */
 .list-group-item-danger {
    background-color: var(--light-danger-background-color) !important;

@@ -4,6 +4,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import TaskScreen from "./TaskScreen";
 import TaskList from "./TaskList";
+import DeleteModal from "./DeleteModal";
+import Modal from "./Modal";
+import Notification from "./Notification";
 
 const App = () => {
    const [tasks, setTasks] = useState([]);
@@ -122,58 +125,33 @@ const App = () => {
       .sort((a, b) => new Date(b.finishDate) - new Date(a.finishDate))
       .slice(0, 5);
 
-   const taskScreen = showModal && (
-      <div className='modal'>
-         <div className='modal-content'>
-            <span className='close' onClick={closeModal}>
-               &times;
-            </span>
+   const confirmDel = showDeleteModal && (
+      <DeleteModal cancel={cancelDeleteTask} confirm={confirmDeleteTask} />
+   );
+
+   return (
+      <div className={`App ${isDarkMode ? "dark-theme" : "light-theme"}`}>
+         <Notification message={notification} />
+         <button
+            type='button'
+            className='link-button'
+            onClick={openModal}
+         ></button>
+         <Modal isOpen={showModal} onClose={closeModal}>
             <TaskScreen
                onClick={addNewTask}
                onUpdate={updateTask}
                onClose={closeModal}
                taskToEdit={taskToEdit}
             />
-         </div>
-      </div>
-   );
-
-   const confirmDel = showDeleteModal && (
-      <div className='modal'>
-         <div className='modal-content'>
-            <h2>Czy na pewno chcesz usunąć to zadanie?</h2>
-            <button onClick={confirmDeleteTask} className='btn btn-danger'>
-               Usuń
-            </button>
-            <button onClick={cancelDeleteTask} className='btn btn-secondary'>
-               Anuluj
-            </button>
-         </div>
-      </div>
-   );
-
-   const notifyAlert = notification && (
-      <div className='alert alert-success' role='alert'>
-         {notification}
-      </div>
-   );
-
-   return (
-      <div className={`App ${isDarkMode ? "dark-theme" : "light-theme"}`}>
-         {notifyAlert}
-         <button
-            type='button'
-            className='link-button'
-            onClick={openModal}
-         ></button>
-         {taskScreen}
+         </Modal>
          {confirmDel}
          <TaskList
             activeTasks={todoTasks}
             inactiveTasks={doneTasks}
-            delete={handleDeleteConfirmation}
+            deleteTask={handleDeleteConfirmation}
             done={markDoneTask}
-            edit={handleEditTask}
+            onEdit={handleEditTask}
             undo={undoTask}
          />
          <button

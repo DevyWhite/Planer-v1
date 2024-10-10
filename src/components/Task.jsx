@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { FaCheck } from "react-icons/fa";
+
+import TaskHeader from "./TaskHeader";
+import TaskButtonGroup from "./TaskButtonGroup";
+import TaskDetails from "./TaskDetails";
 import "./Task.css";
 
-const Task = ({ task, click, inactive, done, edit, undo }) => {
+const Task = ({ task, onDelete, inactive, done, onEdit, undo }) => {
    const [isDetailsVisible, setIsDetailsVisible] = useState(false);
    const [subtasks, setSubtasks] = useState(task.subtasks || []);
 
@@ -25,65 +28,33 @@ const Task = ({ task, click, inactive, done, edit, undo }) => {
       setSubtasks(updatedSubtasks); // Aktualizacja stanu subtasks
    };
 
-   const addList =
-      Array.isArray(subtasks) && subtasks.length > 0 ? (
-         subtasks.map((subtask, index) => (
-            <div
-               key={index}
-               onClick={() => toggleSubtaskCompletion(index)}
-               className={`subtask ${subtask.completed ? "completed" : ""}`}
-            >
-               {subtask.completed ? <s>{subtask.text}</s> : subtask.text}
-            </div>
-         ))
-      ) : (
-         <p>Brak podzadań</p>
-      );
-
    const itemStyle = `list-group-item ${
       task.important ? "list-group-item-danger" : ""
    }`;
 
    return (
       <ul className='list-group'>
-         <li className={itemStyle} onClick={toggleDetails}>
-            <strong>{task.text}</strong>
-            {!inactive && <div>Zrobić do: {task.date}</div>}
-            {inactive && (
-               <div>
-                  <FaCheck className='check-icon' /> Wyokonano:{" "}
-                  {task.finishDate}
-               </div>
-            )}
-            <div className='task-buttons'>
-               {!inactive && (
-                  <>
-                     <button
-                        onClick={() => done(task.id)}
-                        className='btn btn-success done-btn2'
-                     >
-                        Zrobione
-                     </button>
-                     <button onClick={() => edit(task)}>Edytuj</button>
-                  </>
-               )}
-               {inactive && (
-                  <button onClick={() => undo(task.id)}>Cofnij</button>
-               )}
-               <button
-                  onClick={() => click(task.id)}
-                  className='btn btn-danger delete-btn2'
-               >
-                  Usuń
-               </button>
-            </div>
+         <li className={itemStyle}>
+            <TaskHeader
+               task={task}
+               inactive={inactive}
+               toggleDetails={toggleDetails}
+            />
+            <TaskButtonGroup
+               task={task}
+               inactive={inactive}
+               done={done}
+               onEdit={onEdit}
+               undo={undo}
+               onDelete={onDelete}
+            />
          </li>
          <div className='task-details'>
             {isDetailsVisible && (
-               <div className='details'>
-                  <h4>Szczegóły zadania</h4>
-                  <div>{addList}</div>
-               </div>
+               <TaskDetails
+                  subtasks={subtasks}
+                  onToggleSubtaskCompletion={toggleSubtaskCompletion}
+               />
             )}
          </div>
       </ul>

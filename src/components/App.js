@@ -78,6 +78,14 @@ const App = () => {
       setTaskToEdit(null);
    };
 
+   const updateSubtasks = (updatedTask) => {
+      setTasks((prevTasks) =>
+         prevTasks.map((task) =>
+            task.id === updatedTask.id ? updatedTask : task
+         )
+      );
+   };
+
    const toggleTheme = () => {
       setIsDarkMode((prev) => !prev);
    };
@@ -153,6 +161,7 @@ const App = () => {
             done={markDoneTask}
             onEdit={handleEditTask}
             undo={undoTask}
+            updateSubtasks={updateSubtasks}
          />
          <button
             onClick={toggleTheme}

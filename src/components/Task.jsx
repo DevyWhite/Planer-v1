@@ -5,7 +5,15 @@ import TaskButtonGroup from "./TaskButtonGroup";
 import TaskDetails from "./TaskDetails";
 import "./Task.css";
 
-const Task = ({ task, onDelete, inactive, done, onEdit, undo }) => {
+const Task = ({
+   task,
+   onDelete,
+   inactive,
+   done,
+   onEdit,
+   undo,
+   onUpdateTask,
+}) => {
    const [isDetailsVisible, setIsDetailsVisible] = useState(false);
    const [subtasks, setSubtasks] = useState(task.subtasks || []);
 
@@ -21,11 +29,12 @@ const Task = ({ task, onDelete, inactive, done, onEdit, undo }) => {
    const toggleSubtaskCompletion = (subtaskIndex) => {
       const updatedSubtasks = subtasks.map((subtask, index) => {
          if (index === subtaskIndex) {
-            return { ...subtask, completed: !subtask.completed }; // Zmiana statusu subtasku
+            return { ...subtask, completed: !subtask.completed };
          }
          return subtask;
       });
-      setSubtasks(updatedSubtasks); // Aktualizacja stanu subtasks
+      setSubtasks(updatedSubtasks);
+      onUpdateTask({ ...task, subtasks: updatedSubtasks });
    };
 
    const itemStyle = `list-group-item ${

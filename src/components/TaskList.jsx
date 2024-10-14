@@ -9,6 +9,7 @@ const TaskList = ({
    done,
    onEdit,
    undo,
+   updateSubtasks,
 }) => {
    const renderTasks = (tasks, isInactive) =>
       tasks.map((task) => (
@@ -18,11 +19,12 @@ const TaskList = ({
          >
             <Task
                task={task}
-               onDelete={deleteTask} // Zmiana nazwy na bardziej opisową
+               onDelete={deleteTask}
                done={done}
                onEdit={onEdit}
                inactive={isInactive}
                undo={isInactive ? undo : undefined}
+               onUpdateTask={updateSubtasks}
             />
          </div>
       ));

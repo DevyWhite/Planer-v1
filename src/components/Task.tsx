@@ -1,11 +1,42 @@
-import React, { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
 import TaskHeader from "./TaskHeader";
 import TaskButtonGroup from "./TaskButtonGroup";
 import TaskDetails from "./TaskDetails";
 import "./Task.css";
 
-const Task = ({
+interface Subtask {
+   text: string;
+   completed: boolean;
+}
+
+interface TaskProps {
+   task: {
+      id: string;
+      text: string;
+      date: string;
+      important: boolean;
+      active: boolean;
+      finishDate: string;
+      subtasks: Subtask[];
+   };
+   onDelete: (id: string) => void;
+   inactive: boolean;
+   done: (id: string) => void;
+   onEdit: (task: {
+      id: string;
+      text: string;
+      date: string;
+      important: boolean;
+      active: boolean;
+      finishDate: string;
+      subtasks: Subtask[];
+   }) => void;
+   undo: (id: string) => void;
+   onUpdateTask: (task: { id: string; subtasks: Subtask[] }) => void;
+}
+
+const Task: FC<TaskProps> = ({
    task,
    onDelete,
    inactive,
@@ -26,7 +57,7 @@ const Task = ({
       setIsDetailsVisible((prev) => !prev);
    };
 
-   const toggleSubtaskCompletion = (subtaskIndex) => {
+   const toggleSubtaskCompletion = (subtaskIndex: number) => {
       const updatedSubtasks = subtasks.map((subtask, index) => {
          if (index === subtaskIndex) {
             return { ...subtask, completed: !subtask.completed };

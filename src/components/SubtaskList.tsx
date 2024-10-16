@@ -1,6 +1,19 @@
-import React from "react";
+import { FC } from "react";
 
-const SubtaskList = ({ subtasks = [], onToggleSubtaskCompletion }) => {
+interface Subtask {
+   text: string;
+   completed: boolean;
+}
+
+interface SubtaskListProps {
+   subtasks?: Subtask[];
+   onToggleSubtaskCompletion: (index: number) => void;
+}
+
+const SubtaskList: FC<SubtaskListProps> = ({
+   subtasks = [],
+   onToggleSubtaskCompletion,
+}) => {
    const renderSubtasks = () => {
       if (subtasks.length === 0) {
          return <p>Brak podzadań</p>;

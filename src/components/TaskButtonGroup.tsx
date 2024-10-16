@@ -1,6 +1,37 @@
-import React from "react";
+import { FC } from "react";
 
-const TaskButtonGroup = ({ task, inactive, done, onEdit, undo, onDelete }) => {
+interface Subtask {
+   text: string;
+   completed: boolean;
+}
+
+interface Task {
+   id: string;
+   text: string;
+   date: string;
+   important: boolean;
+   active: boolean;
+   finishDate: string;
+   subtasks: Subtask[];
+}
+
+interface TaskButtonGroupProps {
+   task: Task;
+   inactive: boolean;
+   done: (id: string) => void;
+   onEdit: (task: Task) => void;
+   undo: (id: string) => void;
+   onDelete: (id: string) => void;
+}
+
+const TaskButtonGroup: FC<TaskButtonGroupProps> = ({
+   task,
+   inactive,
+   done,
+   onEdit,
+   undo,
+   onDelete,
+}) => {
    return (
       <div className='task-buttons'>
          {!inactive && (
